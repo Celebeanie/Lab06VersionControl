@@ -1,3 +1,5 @@
+# Yaelsee Temes | 1716-5736
+
 '''
 
 # This is a sample Python script.
@@ -19,7 +21,7 @@ if __name__ == '__main__':
 
 '''
 
-
+# function main that executes options based on user input
 def main():
     global res
 
@@ -27,23 +29,26 @@ def main():
     while True:
         menu()
         option = int(input('Please enter an option: '))
+        # encodes num
         if option == 1:
             num = input('Please enter your password to encode: ')
             encode(num)
             print('Your password has been encoded and stored!')
+        # decodes num and prints original num and new num (now as res)
         elif option == 2:
             decode(num)
             print('The encoded password is ' + res + ', and the original password is ' + str(num) + '.')
+        # exits code
         elif option == 3:
             exit()
 
 
-
+# Variables that will be used to store user data in the following functions
 res = []
 result = []
 num = ''
 
-
+# Prints the menu
 def menu():
     print('Menu')
     print('-------------')
@@ -51,12 +56,14 @@ def menu():
     print('2. Decode')
     print('3. Quit')
 
+# Encodes user variable num
 def encode(num):
     global res
     result = []
 
     x = list(num)
 
+    # Extends variable list result with each number in num with +3. If a number in num is 7, 8, or 9 it will return 0, 1, or 2 respectively
     try:
         for char in num:
             if char == '9':
@@ -70,6 +77,7 @@ def encode(num):
 
     except IndexError:
         pass
+    # converts list back to string to print results
     result = '[%s]' % ', '.join(map(str, result))
     result = str(result)
     result = result.replace(', ', '')
@@ -86,6 +94,7 @@ def decode(num):
 
     x = list(num)
 
+    # Extends variable list result with each number in num with -3. If a number in num is 0, 1, or 2 it will return 7, 8, or 9 respectively
     try:
         for char in num:
             if char == '2':
@@ -99,6 +108,7 @@ def decode(num):
 
     except IndexError:
         pass
+    # converts list back to string to print results
     result = '[%s]' % ', '.join(map(str, result))
     result = str(result)
     result = result.replace(', ', '')
@@ -109,6 +119,7 @@ def decode(num):
     # print(res)
     return res, num
 
-
+# runs function main()
 if __name__ == '__main__':
     main()
+
